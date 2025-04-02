@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المفاجأة</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 50px;
+        }
+        #surpriseImage {
+            display: none; /* إخفاء الصورة افتراضيًا */
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
 
+    <h1>المفاجأة قادمة قريبًا...</h1>
+    <p>انتظر حتى يحين الوقت المحدد لرؤية المفاجأة!</p>
+
+    <img id="surpriseImage" src="surprise.jpg" alt="المفاجأة!">
+
+    <script>
+        // تحديد وقت الظهور (السنة، الشهر - يبدأ من 0، اليوم، الساعة، الدقيقة، الثانية)
+        const revealTime = new Date(2025, 3, 1, 15, 0, 0).getTime();
+
+        function checkTime() {
+            const now = new Date().getTime();
+            if (now >= revealTime) {
+                document.getElementById("surpriseImage").style.display = "block";
+            } else {
+                setTimeout(checkTime, 1000); // فحص الوقت كل ثانية
+            }
+        }
+
+        checkTime();
+    </script>
+
+</body>
+</html>
